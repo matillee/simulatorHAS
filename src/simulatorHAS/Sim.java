@@ -87,12 +87,19 @@ public class Sim {
 					int bandEst = estimatedBandwidth1(newBandwidth, downloadTime);
 //					int bandEst = estimatedBandwidth2(newBandwidth, downloadTime);
 					
-					int quality = checkQuality(bandEst);
+					int requestedQuality = checkQuality(bandEst);
 					
-					playbackQuality.add(quality);
+					try {
+						RequestWriter.write(simTime + " " + requestedQuality + "\n");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					playbackQuality.add(requestedQuality);
 //					playbackQuality[buffer] = quality;
 					
-					downloadingFragment = new Fragment(quality);
+					downloadingFragment = new Fragment(requestedQuality);
 					
 					downloadTime = 0; //Vi har inte börjat ladda ner än
 					
@@ -105,7 +112,7 @@ public class Sim {
 					buffer += secondsDownloaded;
 					
 					if(downloadingFragment.getLeftToDownload() == 0) {
-						canDownload = false;
+						downloading = false;
 					}
 					
 				}
@@ -120,7 +127,12 @@ public class Sim {
 			
 			
 			
-			
+			try {
+				BufferOccWriter.write(simTime + " " + buffer + "\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 		
@@ -208,7 +220,8 @@ public class Sim {
 				
 				buffer--; //hur vet vi vilken kvalitet vi spelar?
 				try {
-					StreamNrWriter.write(playbackQuality.get(frame));
+					
+					StreamNrWriter.write(playbackQuality.get(frame)+ "\n");
 					frame++;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
