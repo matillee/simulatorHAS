@@ -25,6 +25,7 @@ public class Sim {
 	private ArrayList<Integer> playbackQuality = new ArrayList<Integer>();
 //	private int[] playbackQuality = new int[6];
 	private int frame = 0;
+	private int counter = 0;
 	
 	private static BufferedWriter BufferOccWriter;
 	private static BufferedWriter StreamNrWriter;
@@ -37,7 +38,6 @@ public class Sim {
 		
 //		simulator.readTraceFile("/home/mater832/Programmering/Tddd66Lab2.3/src/tracefile.txt");
 		simulator.readTraceFile("src/tracefile.txt");
-		simulator.simulation();
 
 		try {
 //			BufferOccWriter = new BufferedWriter(new FileWriter("/home/mater832/Programmering/Tddd66Lab2.3/src/input1.txt/"));
@@ -47,7 +47,7 @@ public class Sim {
 			BufferOccWriter = new BufferedWriter(new FileWriter("src/input1.txt/"));
 			StreamNrWriter = new BufferedWriter(new FileWriter("src/input2.txt"));
 			RequestWriter = new BufferedWriter(new FileWriter("src/input3.txt"));
-
+			
 			simulator.simulation();
 
 			BufferOccWriter.close();
@@ -62,6 +62,16 @@ public class Sim {
 		
 	}
 	
+	private void print(int simTime) {
+		System.out.println();
+		System.out.println("simTime: " + simTime);
+		System.out.println("Buffer size: " + buffer);
+		System.out.println("Download time: " + downloadTime);
+		System.out.println("Frame: " + frame);
+		System.out.println("size: " + playbackQuality.size());
+		System.out.println();
+	}
+	
 	
 	private void simulation(){
 		
@@ -70,7 +80,7 @@ public class Sim {
 //		for(int simTime=0;simTime<120;simTime++) { //eftersom filen är 2 min = 120 sekunder
 			
 			//Ska den vara först eller sist..?
-			bufferHandler(); //kollar om vi kan ladda ner eller inte
+			bufferHandler(simTime); //kollar om vi kan ladda ner eller inte
 			
 			int newBandwidth = bandwidthHistory.get(simTime);
 			
@@ -96,18 +106,23 @@ public class Sim {
 						e.printStackTrace();
 					}
 					
-					playbackQuality.add(requestedQuality);
+					
 //					playbackQuality[buffer] = quality;
 					
-					downloadingFragment = new Fragment(requestedQuality);
+					int realQuality = getActualQuality(requestedQuality);
+					
+					playbackQuality.add(realQuality);
+					
+					downloadingFragment = new Fragment(realQuality);
 					
 					downloadTime = 0; //Vi har inte börjat ladda ner än
 					
+					downloading = true;					
 				}else {
 					
 					downloadTime++;
 					
-					int secondsDownloaded = downloadingFragment.download(newBandwidth);
+					int secondsDownloaded = downloadingFragment.download(newBandwidth, buffer, MAXBUF);
 					
 					buffer += secondsDownloaded;
 					
@@ -152,6 +167,33 @@ public class Sim {
 		return quality;
 	}
 
+	private int getActualQuality(int requestedQuality) {
+		
+		int previousQuality;
+		int actualQuality;
+		
+		if(playbackQuality.isEmpty() || hasCrashed ) {
+			previousQuality = -1;
+		}else {
+			
+			previousQuality = playbackQuality.get(playbackQuality.size()- 1);
+		}
+		
+		 
+		
+		if (requestedQuality > previousQuality) {
+			actualQuality = previousQuality + 1;
+
+		} else if (requestedQuality < previousQuality - 2) {
+			actualQuality = previousQuality - 2;
+
+		} else {
+			actualQuality = requestedQuality;
+		}
+		
+		return actualQuality;
+		
+	}
 	
 	private void readTraceFile(String fileName){
 		BufferedReader br;
@@ -201,28 +243,39 @@ public class Sim {
 	}
 	
 	//Kallas på för varje omgång av for loopen
-	private void bufferHandler() {
+	private void bufferHandler(int simTime) {
 		
+		print(simTime);
+	
 		if(buffer == 0) {
 			//Pause video
 			hasCrashed = true;
 		}else {
 			
 			if(hasCrashed) {
-				//don't play video until minBuf is reached
+
 				if(buffer >= MINBUF) {
-					//play video	
-					//buffer--; //Väntar till nästa gång..
+
 					hasCrashed = false;
 				}
 			}else {
 				//play video
 				
-				buffer--; //hur vet vi vilken kvalitet vi spelar?
+				buffer--;
 				try {
 					
-					StreamNrWriter.write(playbackQuality.get(frame)+ "\n");
-					frame++;
+					if(frame == 1) {
+						StreamNrWriter.write(simTime + " " + playbackQuality.get(0)+ "\n");
+					}else if (frame > 0){
+						StreamNrWriter.write(simTime + " " + playbackQuality.get(frame-2)+ "\n");
+					}
+					
+					counter++;
+					if(counter == 4) {
+						frame++;
+						counter = 0;
+					}
+					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -231,15 +284,20 @@ public class Sim {
 				
 			}
 			
-			if(buffer < MINBUF) {
+//			if(buffer <= MINBUF && hasCrashed) {
+			if((buffer <= MINBUF) || (buffer > MINBUF && buffer < MAXBUF)) {
 				//Start downloading
 				canDownload = true;
+//				hasCrashed = false;
 			}
 			
-			if(buffer > MAXBUF) {
+			if(buffer == MAXBUF) {
 				//stop downloading
 				canDownload = false;
 			}
+//			else if(buffer == MINBUF && !hasCrashed) {
+//				canDownload = true;
+//			}
 		}
 		
 	}
