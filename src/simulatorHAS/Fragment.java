@@ -2,10 +2,15 @@ package simulatorHAS;
 
 public class Fragment {
 
-	private int bitrate = 0; // storlek per sekund, 1/4 of the fragment equals one second
+	private int bitrate = 0;
 	public int leftToDownload = 4;
+	private int quality;
+	private boolean finished;
+	private int secondsPlayed=0;
 
 	public Fragment(int quality) {
+		
+		this.quality = quality;
 
 		if (quality == 0) {
 			bitrate = 250;
@@ -19,14 +24,9 @@ public class Fragment {
 
 	}
 
-	// För varje bitrate som vi laddat ner,
-	// så vill vi lägga till en sekund i buffern.
-
 	public int download(int bandwidth, int buffer, int MAXBUF) {
 
 		int seconds = 0;
-
-		// int fragmentsize = bitrate * 4;
 
 		seconds = (bandwidth / bitrate);
 
@@ -50,7 +50,8 @@ public class Fragment {
 			leftToDownload = 0;
 
 		}
-
+		
+		
 		return seconds;
 
 	}
@@ -58,5 +59,24 @@ public class Fragment {
 	public int getLeftToDownload() {
 		return leftToDownload;
 	}
+	
+	public int getQuality() {
+		return this.quality;
+	}
 
+	public int getSecondsPlayed() {
+		return this.secondsPlayed;
+	}
+	
+	public void playFrame() {
+		this.secondsPlayed++;
+		if(secondsPlayed == 4) {
+			finished = true;
+		}
+		
+	}
+	
+	public boolean isDone() {
+		return finished;
+	}
 }
