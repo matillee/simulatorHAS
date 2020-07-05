@@ -8,12 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import hejhej.Fragment;
-import hejhej.Sim;
+import simulatorHAS.Fragment;
 
 public class Sim {
 
-	private final double alpha = 1;
+	private final double alpha = 0.005;
 	private int previousEst = 1; // previous estimated available bandwidth
 	private ArrayList<Integer> bandwidthHistory = new ArrayList<Integer>(); // download rate in kBit/s
 
@@ -33,31 +32,31 @@ public class Sim {
 	private int realQuality;
 	private int prev;
 
-	private static BufferedWriter BufferOccWriter;
-	private static BufferedWriter StreamNrWriter;
+	private static BufferedWriter bufferOccWriter;
+	private static BufferedWriter streamNrWriter;
 	private static BufferedWriter RequestWriter;
 
 	public static void main(String[] args) {
 
 		Sim simulator = new Sim();
 
-		simulator.readTraceFile("/home/mater832/Programmering/Tddd66Lab2.3/src/tracefile.txt");
+		simulator.readTraceFile("/home/matillee/Projects/simulatorHAS/src/tracefile.txt");
 
 
 		try {
 
-			BufferOccWriter = new BufferedWriter(new FileWriter("/home/mater832/Programmering/hejhej/src/input1.txt/"));
-			StreamNrWriter = new BufferedWriter(new FileWriter("/home/mater832/Programmering/hejhej/src/input2.txt"));
-			RequestWriter = new BufferedWriter(new FileWriter("/home/mater832/Programmering/hejhej/src/input3.txt"));
+			bufferOccWriter = new BufferedWriter(new FileWriter("/home/matillee/Projects/simulatorHAS/src/bufferOcc.txt/"));
+			streamNrWriter = new BufferedWriter(new FileWriter("/home/matillee/Projects/simulatorHAS/src/streamNum.txt"));
+			RequestWriter = new BufferedWriter(new FileWriter("/home/matillee/Projects/simulatorHAS/src/requests.txt"));
 
 			simulator.simulation();
 
-			BufferOccWriter.close();
-			StreamNrWriter.close();
+			bufferOccWriter.close();
+			streamNrWriter.close();
 			RequestWriter.close();
 
 		} catch (IOException e) {
-
+			System.out.println("BufferedWriter Exception");
 			e.printStackTrace();
 		}
 
@@ -78,8 +77,8 @@ public class Sim {
 						downloadTime = 1; 
 					}
 
-					int bandEst = estimatedBandwidth1(newBandwidth, downloadTime);
-//					int bandEst = estimatedBandwidth2(newBandwidth, downloadTime);
+//					int bandEst = estimatedBandwidth1(newBandwidth, downloadTime);
+					int bandEst = estimatedBandwidth2(newBandwidth, downloadTime);
 
 					int requestedQuality = checkQuality(bandEst);
 
@@ -89,7 +88,7 @@ public class Sim {
 						RequestWriter.write(simTime + " " + realQuality + "\n");
 
 					} catch (IOException e) {
-
+						System.out.println("RequestWriter Exception");
 						e.printStackTrace();
 					}
 
@@ -119,9 +118,9 @@ public class Sim {
 			} 
 
 			try {
-				BufferOccWriter.write(simTime + " " + buffer + "\n");
+				bufferOccWriter.write(simTime + " " + buffer + "\n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				System.out.println("BufferOcc Exception");
 				e.printStackTrace();
 			}
 			
@@ -254,36 +253,23 @@ public class Sim {
 
 	private void playVideo(int simTime) {
 
-		Fragment nowPlayed;
-		
-		do {
-			
-			nowPlayed = fragments.get(frame);
-			
-			
-			if(nowPlayed.isDone()) {
-				frame++;
-			}
-			
-		}while(nowPlayed.getSecondsPlayed() > 4);
-			
-		
+		Fragment nowPlayed = fragments.get(frame);
+		nowPlayed.playFrame();
+		buffer--;
 		try {
 
-			if (nowPlayed.getLeftToDownload() == 0) {
+			streamNrWriter.write(simTime + " " + nowPlayed.getQuality() + "\n");
 				
-				buffer--;
-				nowPlayed.playFrame();
-				
-				StreamNrWriter.write(simTime + " " + nowPlayed.getQuality() + "\n");
-
+			if(nowPlayed.isDone()) {
+				frame++;
 			}
 
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("PlayVideo Exception");
 			e.printStackTrace();
 		}
 	}
+
 }
 	

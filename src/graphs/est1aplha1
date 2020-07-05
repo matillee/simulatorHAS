@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0
 %%Title: output.eps
-%%Creator: gnuplot 5.2 patchlevel 2
-%%CreationDate: Wed Feb 19 20:11:03 2020
+%%Creator: gnuplot 5.2 patchlevel 8
+%%CreationDate: Sun Jul  5 19:35:04 2020
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 554 770
 %%Orientation: Landscape
@@ -50,7 +50,7 @@ gnudict begin
   } if
 } def
 %
-% Gnuplot Prolog Version 5.1 (Oct 2015)
+% Gnuplot Prolog Version 5.2 (Dec 2017)
 %
 %/SuppressPDFMark true def
 %
@@ -307,7 +307,7 @@ gnudict begin
   ColR ColG ColB setrgbcolor} def
 /BoxColFill {gsave Rec PolyFill} def
 /PolyFill {gsave Density fill grestore grestore} def
-/h {rlineto rlineto rlineto gsave closepath fill grestore} bind def
+/h {rlineto rlineto rlineto closepath gsave fill grestore stroke} bind def
 %
 % PostScript Level 1 Pattern Fill routine for rectangles
 % Usage: x y w h s a XX PatternFill
@@ -480,10 +480,10 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (output.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.2 patchlevel 2)
+  /Creator (gnuplot 5.2 patchlevel 8)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Wed Feb 19 20:11:03 2020)
+  /CreationDate (Sun Jul  5 19:35:04 2020)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -547,6 +547,8 @@ stroke
 888 1096 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 0)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
+/vshift -80 def
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -567,6 +569,7 @@ stroke
 888 1741 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 2)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -587,6 +590,7 @@ stroke
 888 2385 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 4)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -607,6 +611,7 @@ stroke
 888 3030 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 6)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -629,6 +634,7 @@ stroke
 888 3674 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 8)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -649,6 +655,7 @@ stroke
 888 4319 M
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 10)]
 ] -80.0 MRshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -669,6 +676,7 @@ currentpoint gsave translate -45 rotate 0 0 moveto
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 0)]
 ] -80.0 MLshow
 grestore
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -691,6 +699,7 @@ currentpoint gsave translate -45 rotate 0 0 moveto
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 60)]
 ] -80.0 MLshow
 grestore
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -711,6 +720,7 @@ currentpoint gsave translate -45 rotate 0 0 moveto
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 120)]
 ] -80.0 MLshow
 grestore
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -731,6 +741,7 @@ currentpoint gsave translate -45 rotate 0 0 moveto
 [ [(Times-Roman) 240.0 0.0 true true 0 ( 180)]
 ] -80.0 MLshow
 grestore
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LCb setrgbcolor
@@ -748,21 +759,25 @@ Z stroke
 LTb
 LCb setrgbcolor
 LCb setrgbcolor
-216 2627 M
+228 2627 M
 currentpoint gsave translate -270 rotate 0 0 moveto
 [ [(Times-Roman) 240.0 0.0 true true 0 (Buffer Time \(s\))]
 ] -80.0 MCshow
 grestore
+/Times-Roman findfont 240 scalefont setfont
 LTb
 LCb setrgbcolor
 3899 168 M
 [ [(Times-Roman) 240.0 0.0 true true 0 (Time)]
 ] -80.0 MCshow
+/Times-Roman findfont 240 scalefont setfont
 LTb
 LCb setrgbcolor
 3899 4679 M
 [ [(Times-Roman) 240.0 0.0 true true 0 (ASSIGNMENT 1 TDDD66 PLAYER 1)]
 ] -80.0 MCshow
+/Times-Roman findfont 240 scalefont setfont
+LTb
 % Begin plot #1
 1.000 UL
 LTb
@@ -771,6 +786,7 @@ LCb setrgbcolor
 2103 4136 M
 [ [(Times-Roman) 240.0 0.0 true true 0 (Buffer Occupancy)]
 ] -80.0 MLshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LC3 setrgbcolor
@@ -789,86 +805,91 @@ LC3 setrgbcolor
 28 0 V
 29 0 V
 29 -322 V
-28 322 V
-29 0 V
-28 0 V
-29 -322 V
-29 322 V
 28 0 V
 29 0 V
-28 -322 V
-29 322 V
-29 0 V
 28 0 V
-29 -322 V
-28 322 V
-29 0 V
-29 0 V
-28 -322 V
-29 322 V
-28 0 V
-29 0 V
-29 -322 V
-28 322 V
-29 0 V
-28 0 V
-29 -322 V
-29 322 V
-28 0 V
-29 0 V
-28 -322 V
-29 322 V
-29 0 V
-28 0 V
-29 -322 V
-28 322 V
-29 0 V
-29 0 V
-28 -322 V
-29 322 V
-28 0 V
-29 0 V
-29 -322 V
-28 322 V
-29 0 V
-28 0 V
-29 -322 V
-29 322 V
-28 0 V
-29 0 V
-29 -322 V
-28 322 V
-29 0 V
-28 0 V
-29 -322 V
-29 322 V
-28 0 V
-29 0 V
-28 -322 V
-29 322 V
-29 0 V
-28 0 V
-29 -322 V
-28 322 V
-29 0 V
-29 0 V
-28 -322 V
-29 322 V
-28 0 V
-29 0 V
-29 -322 V
-28 322 V
-29 0 V
-28 0 V
-29 -322 V
-29 0 V
-28 0 V
-29 322 V
-28 -322 V
 29 0 V
 29 -323 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 -322 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 -322 V
+28 -323 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 -322 V
+29 322 V
+28 645 V
+29 322 V
+29 -322 V
+28 967 V
+29 -322 V
+28 322 V
+29 0 V
+29 0 V
+28 -322 V
+29 322 V
+28 0 V
+29 0 V
+29 -322 V
+28 322 V
+29 0 V
+28 0 V
+29 -322 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 -323 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
 28 -322 V
 29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 -322 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 -323 V
+29 0 V
+28 323 V
+29 0 V
+29 -323 V
+28 323 V
+29 0 V
+28 0 V
+29 -323 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 -322 V
+29 322 V
+28 323 V
+29 644 V
+28 -322 V
+29 967 V
+29 -322 V
+28 322 V
+29 0 V
+28 0 V
+29 -322 V
+29 -323 V
+28 0 V
+29 -322 V
 28 -322 V
 29 -323 V
 29 -322 V
@@ -883,45 +904,39 @@ LC3 setrgbcolor
 29 0 V
 29 0 V
 28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
 29 322 V
-29 0 V
 28 0 V
 29 323 V
-29 0 V
-28 1289 V
-29 -322 V
-28 322 V
-29 0 V
-29 0 V
-28 -322 V
-29 0 V
-28 322 V
-29 0 V
-29 -322 V
-28 322 V
-29 0 V
+29 322 V
 28 0 V
-29 -322 V
-29 0 V
-28 322 V
+29 967 V
 29 0 V
 28 -322 V
 29 322 V
+28 0 V
+29 0 V
+29 -322 V
+28 -323 V
+29 0 V
+28 323 V
+29 0 V
+29 -323 V
+28 323 V
 29 0 V
 28 0 V
-29 -322 V
+29 -323 V
+29 0 V
+28 323 V
+29 0 V
 28 -323 V
+29 323 V
+29 322 V
+28 -322 V
+29 -323 V
+28 -322 V
 29 -322 V
-29 -322 V
-28 -323 V
-29 -322 V
+29 -323 V
+28 -322 V
 % End plot #1
 % Begin plot #2
 stroke
@@ -931,6 +946,7 @@ LCb setrgbcolor
 2103 3896 M
 [ [(Times-Roman) 240.0 0.0 true true 0 (Stream Number)]
 ] -80.0 MLshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UL
 LTb
 LC2 setrgbcolor
@@ -945,60 +961,7 @@ LC2 setrgbcolor
 29 0 V
 28 0 V
 29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
 0 322 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
 28 0 V
 29 0 V
 29 0 V
@@ -1008,6 +971,7 @@ LC2 setrgbcolor
 28 0 V
 29 0 V
 29 0 V
+0 322 V
 28 0 V
 29 0 V
 28 0 V
@@ -1023,28 +987,12 @@ LC2 setrgbcolor
 28 0 V
 29 0 V
 29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
-29 0 V
-715 0 V
-29 0 V
-28 0 V
-29 0 V
+114 0 V
 29 0 V
 28 0 V
 29 0 V
 28 0 V
-29 0 V
-29 0 V
-28 0 V
-29 0 V
-28 0 V
+0 -967 V
 29 0 V
 29 0 V
 28 0 V
@@ -1054,11 +1002,90 @@ LC2 setrgbcolor
 29 0 V
 29 0 V
 28 0 V
+0 323 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+0 322 V
+28 0 V
 29 0 V
 28 0 V
 29 0 V
 29 0 V
 28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+115 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+0 -967 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+0 322 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+0 323 V
+515 0 V
+29 0 V
+28 0 V
+29 0 V
+0 -645 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+0 322 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+0 323 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+0 322 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
+28 0 V
+29 0 V
+28 0 V
+29 0 V
+29 0 V
 % End plot #2
 % Begin plot #3
 1.000 UP
@@ -1070,37 +1097,38 @@ LCb setrgbcolor
 2103 3656 M
 [ [(Times-Roman) 240.0 0.0 true true 0 (Requests)]
 ] -80.0 MLshow
+/Times-Roman findfont 240 scalefont setfont
 1.000 UP
 8.000 UL
 LTb
 LC6 setrgbcolor
 1046 1096 TriU
 1104 1096 TriU
-1161 1096 TriU
-1275 1096 TriU
-1390 1096 TriU
-1504 1096 TriU
-1618 1418 TriU
-1733 1418 TriU
-1847 1418 TriU
-1962 1418 TriU
-2076 1418 TriU
-2190 1418 TriU
-2305 1418 TriU
-2419 1741 TriU
-2534 1741 TriU
-2648 1741 TriU
-2763 1741 TriU
-2877 1741 TriU
-2991 1741 TriU
-3106 1741 TriU
-3220 1741 TriU
-3335 1741 TriU
+1161 1418 TriU
+1275 1741 TriU
+1390 2063 TriU
+1533 2063 TriU
+1676 2063 TriU
+1819 2063 TriU
+1990 2063 TriU
+2105 1096 TriU
+2162 1418 TriU
+2276 1741 TriU
+2391 2063 TriU
+2505 2063 TriU
+2648 2063 TriU
+2791 2063 TriU
+2934 2063 TriU
+3077 2063 TriU
+3192 2063 TriU
+3306 2063 TriU
 3449 2063 TriU
-3563 2063 TriU
-4422 1096 TriU
-4479 1418 TriU
-4593 1741 TriU
+3563 1096 TriU
+3621 1418 TriU
+3735 1741 TriU
+4364 1096 TriU
+4450 1418 TriU
+4565 1741 TriU
 4708 2063 TriU
 4822 2063 TriU
 4936 2063 TriU

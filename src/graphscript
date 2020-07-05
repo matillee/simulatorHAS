@@ -1,0 +1,21 @@
+set title "ASSIGNMENT 1 TDDD66 PLAYER 1"
+set key left top
+set key Left reverse
+set terminal postscript enhanced monochrome 24 "Times-Roman"
+set output 'output.eps'
+set grid
+set style line 1 lt 1 lw 1 pt 1 lc 4 ps 1
+set style line 2 lt 1 lw 1 pt 7 lc 3 ps 1
+set style line 3 lt 1 lw 8 pt 8 lc 7 ps 1
+
+set xlabel "Time"
+set ylabel "Buffer Time (s)"
+set xtics border in scale 1,0.5 nomirror rotate by -45  offset character 0, 0, 0
+set xtics (0, 60, 120, 180, 240, 300, 360, 420, 480, 540, 600, 660, 720, 780, 840)
+set yrange [-0.5:10] 
+set xrange [-0.5:200]
+
+
+plot '/home/matillee/Projects/simulatorHAS/src/bufferOcc.txt' using 1:2 title "Buffer Occupancy" with l ls 1,\
+ '/home/matillee/Projects/simulatorHAS/src/streamNum.txt' using 1:2 title "Stream Number" with steps ls 2,\
+ '/home/matillee/Projects/simulatorHAS/src/requests.txt' using 1:2 title "Requests" with points ls 3

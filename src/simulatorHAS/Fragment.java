@@ -70,7 +70,7 @@ public class Fragment {
 	
 	public void playFrame() {
 		this.secondsPlayed++;
-		if(secondsPlayed == 4) {
+		if(this.secondsPlayed == 4) {
 			finished = true;
 		}
 		
